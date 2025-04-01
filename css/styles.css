@@ -1,0 +1,193 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(to bottom, #a8dff0, #d9f2fa); /* Light blue gradient */
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure the body and html allow scrolling */
+html, body {
+    height: auto; /* Allow the height to adjust based on content */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.container {
+    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add some padding for spacing */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #005bb5;
+}
+
+.image-display {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Image Display */
+.image-display img {
+    max-width: 100%; /* Ensure the image doesn't exceed the container width */
+    max-height: 70vh; /* Restrict the image height to 70% of the viewport height */
+    height: auto; /* Maintain the aspect ratio */
+    width: auto; /* Maintain the aspect ratio */
+    border: 1px solid #ddd; /* Add a border around the image */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    padding: 10px; /* Add padding inside the border */
+    display: none; /* Hide the image by default */
+    margin: 0 auto; /* Center the image horizontally */
+    animation: fadeIn 1s;
+    transition: all 0.3s ease; /* Smooth transition for fullscreen toggle */
+    position: fixed; /* Fix the image to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    object-fit: contain; /* Ensure the image scales proportionally */
+    z-index: 1000; /* Bring the image to the front */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    background-color: black; /* Optional: Add a black background for fullscreen */
+}
+
+.instructions {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Slide in from above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at the original position */
+    }
+}
+
+.heading {
+    font-size: 3rem; /* Increase the font size for prominence */
+    font-weight: bold;
+    text-align: center; /* Center the text horizontally */
+    margin: 20px 0; /* Add spacing above and below the heading */
+    background: linear-gradient(to right, #007bff, #6f42c1); /* Blue-to-purple gradient */
+    -webkit-background-clip: text; /* Clip the gradient to the text */
+    -webkit-text-fill-color: transparent; /* Make the gradient visible through the text */
+    animation: fadeIn 1.5s ease-in-out; /* Apply fade-in animation */
+}
+
+.button-row .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    border: 2px solid #0056b3; /* Add a border to all buttons */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.button-row .btn:hover {
+    background-color: #0056b3; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+    border-color: #003f7f; /* Darken the border on hover */
+}
+
+/* Instructions Box */
+.instructions-box {
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px; /* Add padding inside the box */
+    background-color: #f9f9f9; /* Light gray background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    font-size: 0.95rem; /* Slightly smaller font size */
+    line-height: 1.6; /* Improve readability */
+    height: auto; /* Allow the box to adjust based on content */
+    display: none;
+}
+
+/* Instructions Box Heading */
+.instructions-box h3 {
+    font-size: 1.2rem; /* Adjust heading size */
+    margin-bottom: 15px; /* Add spacing below the heading */
+    color: #333; /* Darker text color */
+}
+
+/* Instructions Box List */
+.instructions-box ul {
+    padding-left: 20px; /* Indent the list */
+}
+
+.instructions-box li {
+    margin-bottom: 8px; /* Add spacing between list items */
+}
+
+.hidden {
+    display: none;
+}
+
+.btn.active {
+    position: relative; /* Required for the pseudo-element */
+    background-color: #0056b3 !important; /* Darker shade for the pressed state */
+    color: white !important;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); /* Add an inset shadow for a pressed effect */
+    transform: translateY(2px); /* Slightly move the button down */
+    overflow: hidden; /* Prevent the animation from overflowing the button */
+}
+
+.btn.active::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid #0056b3; /* Border color for the flow animation */
+    border-radius: 5px; /* Match the button's border radius */
+    animation: flowAnimation 1.5s infinite; /* Infinite animation */
+    pointer-events: none; /* Ensure the animation doesn't interfere with clicks */
+}
+
+@keyframes flowAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
